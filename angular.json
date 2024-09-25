@@ -1,0 +1,156 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "front-logistique": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/front-logistique",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.app.json",
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": [
+              "src/styles.css",
+              "src/assets/plugins/bootstrap/css/bootstrap.min.css",
+              "src/assets/css/style.css",
+              "src/assets/css/plugins.css",
+              "src/assets/css/icons.css",
+              "src/assets/switcher/css/switcher.css",
+              "src/assets/switcher/demo.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/jszip/dist/jszip.js",
+              "node_modules/pdfmake/build/pdfmake.js",
+              "node_modules/pdfmake/build/vfs_fonts.js",
+              "node_modules/datatables.net-buttons/js/buttons.html5.js",
+              "node_modules/dropify/dist/js/dropify.js",
+              "src/assets/plugins/bootstrap/js/popper.min.js",
+              "src/assets/plugins/bootstrap/js/bootstrap.min.js",
+              "src/assets/js/jquery.sparkline.min.js",
+              "src/assets/js/sticky.js",
+              "src/assets/js/circle-progress.min.js",
+              "src/assets/plugins/peitychart/jquery.peity.min.js",
+              "src/assets/plugins/peitychart/peitychart.init.js",
+              "src/assets/plugins/sidebar/sidebar.js",
+              "src/assets/plugins/date-picker/date-picker.js",
+              "src/assets/plugins/date-picker/jquery-ui.js",
+              "src/assets/plugins/input-mask/jquery.maskedinput.js",
+              "src/assets/plugins/p-scroll/perfect-scrollbar.js",
+              "src/assets/plugins/p-scroll/pscroll.js",
+              "src/assets/plugins/p-scroll/pscroll-1.js",
+              "src/assets/plugins/chart/Chart.bundle.js",
+              "src/assets/plugins/chart/utils.js",
+              "src/assets/plugins/select2/select2.full.min.js",
+              "src/assets/plugins/datatable/js/jquery.dataTables.min.js",
+              "src/assets/plugins/datatable/js/dataTables.bootstrap5.js",
+              "src/assets/plugins/datatable/js/dataTables.buttons.min.js",
+              "src/assets/plugins/datatable/js/buttons.bootstrap5.min.js",
+              "src/assets/plugins/datatable/js/jszip.min.js",
+              "src/assets/plugins/datatable/pdfmake/pdfmake.min.js",
+              "src/assets/plugins/datatable/pdfmake/vfs_fonts.js",
+              "src/assets/plugins/datatable/js/buttons.html5.min.js",
+              "src/assets/plugins/datatable/js/buttons.print.min.js",
+              "src/assets/plugins/datatable/js/buttons.colVis.min.js",
+
+              "src/assets/js/table-data.js",
+              "src/assets/js/apexcharts.js",
+              "src/assets/plugins/apexchart/irregular-data-series.js",
+              "src/assets/plugins/flot/jquery.flot.js",
+              "src/assets/plugins/flot/jquery.flot.fillbetween.js",
+              "src/assets/plugins/flot/chart.flot.sampledata.js",
+              "src/assets/plugins/flot/dashboard.sampledata.js",
+              "src/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js",
+              "src/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js",
+              "src/assets/plugins/sidemenu/sidemenu.js",
+              "src/assets/plugins/bootstrap5-typehead/autocomplete.js",
+              "src/assets/js/typehead.js",
+              "src/assets/js/index1.js",
+              "src/assets/js/themeColors.js",
+              "src/assets/js/custom-swicher.js",
+              "src/assets/switcher/js/switcher.js",
+              "src/assets/plugins/fileuploads/js/fileupload.js",
+              "src/assets/plugins/fileuploads/js/file-upload.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "sweetalert2",
+              "dropify/dist/js/dropify.js",
+              "jquery",
+              "jspdf-autotable",
+              "canvg"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+
+                  "maximumWarning": "10mb",
+                  "maximumError": "14mb"
+
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "front-logistique:build:production"
+            },
+            "development": {
+              "browserTarget": "front-logistique:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "front-logistique:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "6d2f7204-3f51-43af-846b-6073a4efa86d"
+  }
+}
